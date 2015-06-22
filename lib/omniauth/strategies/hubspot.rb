@@ -42,6 +42,10 @@ module OmniAuth
         fail!(:failed_to_connect, e)
       end
 
+      uid do
+        self.env['omniauth.params']['hubspot']['portal_id']
+      end
+      
       credentials do
         hash = {'token' => access_token['token']}
         hash.merge!('refresh_token' => access_token['refresh_token'])
